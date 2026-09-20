@@ -204,8 +204,8 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
       <div class="dd">
         <button class="top-discord dd-btn" id="projBtn" aria-expanded="false" aria-haspopup="true">dự án <span class="chev">∨</span></button>
         <div class="dd-panel" id="projPanel" role="menu">
-          <a href="/do-nhay-ff" role="menuitem"><b>Đo Nhảy FF</b><small>tool đo độ nhạy Free Fire ↗</small></a>
-          <a href="/watch-together" role="menuitem"><b>Xem Chung</b><small>xem phim chung 2 máy ↗</small></a>
+          <a href="/do-nhay-ff" role="menuitem"><b>Độ Nhạy FF</b><small>tool Free Fire ↗</small></a>
+          <a href="/watch-together" role="menuitem"><b>Watch Together</b><small>xem phim chung 2 máy ↗</small></a>
         </div>
       </div>
       <button class="top-discord" id="discordTop" title="Copy Discord username">discord: kusding ⎘</button>
@@ -285,8 +285,8 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
           <div class="rpc-act" id="rpcAct">đang kết nối…</div>
           <div class="rpc-sp" id="rpcSp" style="display:none"><img id="rpcArt" alt=""><div><div class="t" id="rpcTrack"></div><div class="a" id="rpcArtist"></div></div></div>
         </section>
-        <section class="card info-card wx-card reveal" style="animation-delay:.44s" aria-label="Thời tiết Lâm Đồng">
-          <h4>LÂM ĐỒNG · LIVE</h4>
+        <section class="card info-card wx-card reveal" style="animation-delay:.44s" aria-label="Thời tiết Quảng Hòa">
+          <h4>QUẢNG HÒA · LIVE</h4>
           <div class="wx-temp"><span id="wxTemp">--</span><small>°C</small></div>
           <div class="wx-sub" id="wxSub">đang tải thời tiết…</div>
         </section>
@@ -300,13 +300,13 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
       <!-- Projects -->
       <a class="card proj proj-ff reveal" id="projects" style="animation-delay:.5s" href="/do-nhay-ff">
         <span class="kicker">PROJECT · FREE FIRE</span>
-        <h3>Đo Nhảy FF</h3>
-        <p>Tool đo độ nhạy nhảy Free Fire.</p>
+        <h3>Độ Nhạy FF</h3>
+        <p>Tool chỉnh độ nhạy Free Fire.</p>
         <span class="pill">Mở app ↗</span>
       </a>
       <a class="card proj proj-watch reveal" style="animation-delay:.56s" href="/watch-together">
-        <span class="kicker">PROJECT · XEM CHUNG</span>
-        <h3>Xem Chung — 2 máy 1 phim</h3>
+        <span class="kicker">PROJECT · WATCH TOGETHER</span>
+        <h3>Watch Together</h3>
         <p>Dán link phim, tạo phòng, vừa xem vừa chat.</p>
         <span class="pill">Mở app ↗</span>
       </a>
@@ -409,12 +409,12 @@ async function loadRPC(){
 }
 loadRPC(); setInterval(loadRPC,30000);
 
-// Thời tiết Lâm Đồng (Open-Meteo, không cần key)
+// Thời tiết Quảng Hòa, Lâm Đồng (Open-Meteo, không cần key)
 const WX_TEXT={0:['Quang đãng','☀'],1:['Ít mây','🌤'],2:['Mây rải rác','⛅'],3:['Nhiều mây','☁'],45:['Sương mù','🌫'],48:['Sương mù','🌫'],51:['Mưa phùn','🌧'],53:['Mưa phùn','🌧'],55:['Mưa phùn','🌧'],61:['Mưa nhẹ','🌧'],63:['Mưa','🌧'],65:['Mưa to','⛈'],80:['Mưa rào','🌧'],81:['Mưa rào','🌧'],82:['Mưa to','⛈'],95:['Giông','⛈'],96:['Giông + mưa đá','⛈'],99:['Giông + mưa đá','⛈']};
 async function loadWx(){
   const t=document.getElementById('wxTemp'), s=document.getElementById('wxSub');
   try{
-    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=11.94&longitude=108.46&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FHo_Chi_Minh');
+    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=11.9082&longitude=107.8009&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FHo_Chi_Minh');
     const j=await r.json(); const c=j.current;
     const w=WX_TEXT[c.weather_code]||['—',''];
     t.textContent=Math.round(c.temperature_2m);

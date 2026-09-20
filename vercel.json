@@ -1,0 +1,21 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/do-nhay-ff",
+      "destination": "https://do-nhay-vip.vercel.app"
+    },
+    {
+      "source": "/do-nhay-ff/:path*",
+      "destination": "https://do-nhay-vip.vercel.app/:path*"
+    },
+    {
+      "source": "/watch-together",
+      "destination": "https://watch-together.vercel.app"
+    },
+    {
+      "source": "/watch-together/:path*",
+      "destination": "https://watch-together.vercel.app/:path*"
+    }
+  ]
+}

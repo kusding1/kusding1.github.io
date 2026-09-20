@@ -403,7 +403,7 @@ async function loadRPC(){
     } else {
       box.style.display='none';
       if(game&&game.name)act.innerHTML='đang chơi <b>'+clean(game.name)+'</b>'+(game.details?' — '+clean(game.details):'');
-      else act.textContent = st==='offline' ? 'đang offline' : 'đang online';
+      else act.textContent = st==='offline' ? 'đang offline' : st==='idle' ? 'đang treo máy' : st==='dnd' ? 'đang bận (đừng làm phiền)' : 'đang online';
     }
   }catch(e){act.textContent='không lấy được trạng thái.';}
 }

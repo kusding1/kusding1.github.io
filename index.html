@@ -50,6 +50,10 @@ body::before{
 .dot i{width:8px;height:8px;border-radius:50%;background:#3ECF6E;display:inline-block;box-shadow:0 0 12px #3ECF6E}
 .topbar button.top-discord{font-family:var(--font-m);font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);padding:7px 12px;border-radius:999px;cursor:pointer}
 .topbar button.top-discord:hover{color:var(--cream);border-color:rgba(255,106,38,.5)}
+.top-links{display:flex;gap:8px;align-items:center}
+.topbar a.top-discord{font-family:var(--font-m);font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);padding:7px 12px;border-radius:999px;cursor:pointer;text-decoration:none}
+.topbar a.top-discord:hover{color:var(--cream);border-color:rgba(255,106,38,.5)}
+#projects{scroll-margin-top:16px}
 .layout{display:grid;grid-template-columns:290px 1fr;gap:32px;align-items:start}
 /* LEFT */
 .profile{position:sticky;top:28px}
@@ -170,7 +174,10 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
 <div class="wrap">
   <div class="topbar">
     <span class="dot"><i></i> kusding · lam dong, vn — <span id="clock">--:--</span></span>
-    <button class="top-discord" id="discordTop" title="Copy Discord username">discord: kusding ⎘</button>
+    <div class="top-links">
+      <a class="top-discord" href="#projects">projects ↓</a>
+      <button class="top-discord" id="discordTop" title="Copy Discord username">discord: kusding ⎘</button>
+    </div>
   </div>
 
   <div class="layout">
@@ -189,27 +196,27 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
       <nav class="links-col" aria-label="Social links">
         <a class="btn" href="https://github.com/kusding" target="_blank" rel="noopener">GitHub <small>github.com/kusding ↗</small></a>
         <a class="btn" href="https://facebook.com/kusding" target="_blank" rel="noopener">Facebook <small>Trung Kien ↗</small></a>
-        <a class="btn" href="https://tiktok.com/@kienz" target="_blank" rel="noopener">TikTok <small>@kienz · 631 ↗</small></a>
+        <a class="btn" href="https://tiktok.com/@kusdinh" target="_blank" rel="noopener">TikTok <small>@kusdinh ↗</small></a>
         <button class="btn" id="discordBtn" type="button" title="Copy Discord username">Discord <small>kusding · bấm để copy ⎘</small></button>
-        <a class="btn" href="https://kusding.github.io" target="_blank" rel="noopener">Website <small>kusding.github.io ↗</small></a>
+        <a class="btn" href="https://kusding.xyz" target="_blank" rel="noopener">Website <small>kusding.xyz ↗</small></a>
       </nav>
     </aside>
 
     <!-- RIGHT BENTO -->
     <main class="bento">
-      <!-- Spotify — real embed, nghe được thật -->
-      <section class="card spotify reveal" style="animation-delay:.12s" aria-label="Mixtape Ngọt">
+      <!-- Spotify — album Cái Thứ Hai, nghe được thật -->
+      <section class="card spotify reveal" style="animation-delay:.12s" aria-label="Album Cái Thứ Hai - Thắng">
         <div class="sp-top">
           <div class="sp-cover" aria-hidden="true"><div class="bars"><i></i><i></i><i></i><i></i></div></div>
           <div class="sp-list" id="trackList" role="listbox" aria-label="Tracks"></div>
-          <a class="sp-brand" title="Mở Spotify" href="https://open.spotify.com/search/Ng%E1%BB%8Dt%20band" target="_blank" rel="noopener">
+          <a class="sp-brand" title="Mở Spotify" href="https://open.spotify.com/search/C%C3%A1i%20Th%E1%BB%A9%20Hai%20Th%E1%BA%AFng" target="_blank" rel="noopener">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 1c-2.9-1.8-6.5-2.2-10.8-1.2a.75.75 0 1 1-.3-1.5c4.7-1.1 8.7-.6 12 1.3.4.2.5.9.1 1.4zm1.5-3.3a.94.94 0 0 1-1.3 1.3c-3.3-2-8.3-2.6-12.2-1.4a.94.94 0 1 1-.5-1.8c4.4-1.3 10-0.7 13.9 1.6.5.2.6.9.1 1.3zm.1-3.4C15.2 8 8.8 7.8 5.3 9a1.13 1.13 0 1 1-.7-2.1c4-1.4 11.2-1.1 15.6 1.7a1.13 1.13 0 0 1-1.1 2z"/></svg>
           </a>
         </div>
         <div class="sp-bottom">
-          <div class="sp-track" id="nowTitle">Em Dạo Này - Ngọt</div>
-          <span class="sp-sub">Spotify · bấm track để đổi bài</span>
-          <iframe id="spFrame" title="Spotify player — Ngọt" src="https://open.spotify.com/embed/track/4Vo3stTe6AXRFUxPBXeA5Y?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border-radius:12px;margin-top:10px"></iframe>
+          <div class="sp-track" id="nowTitle">Khóc Đấy - Thắng</div>
+          <span class="sp-sub">Cái Thứ Hai · bấm track để đổi bài</span>
+          <iframe id="spFrame" title="Spotify player — Cái Thứ Hai" src="https://open.spotify.com/embed/track/1x6rRJAgtPYgmlPOkZ6hpz?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border-radius:12px;margin-top:10px"></iframe>
         </div>
       </section>
 
@@ -222,11 +229,11 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
       </a>
 
       <!-- TikTok -->
-      <a class="card mini tt reveal" style="animation-delay:.28s" href="https://tiktok.com/@kienz" target="_blank" rel="noopener">
+      <a class="card mini tt reveal" style="animation-delay:.28s" href="https://tiktok.com/@kusdinh" target="_blank" rel="noopener">
         <span class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="#111"><path d="M19.6 7.2a5.6 5.6 0 0 1-3.7-3.6V1.5h-3.4v13.3a2.9 2.9 0 1 1-2-2.7V8.6a6.3 6.3 0 1 0 5.4 6.2V8.1a9 9 0 0 0 3.7 1.9V6.6c0 .2 0 .4 0 .6z"/></svg></span>
-        <h3>kienz</h3>
+        <h3>kusdinh</h3>
         <p>tiktok.com</p>
-        <span class="pill">Follow 631</span>
+        <span class="pill">Follow</span>
       </a>
 
       <!-- Contributions -->
@@ -241,19 +248,19 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
 
       <div class="side-stack">
         <section class="card info-card ngot reveal" style="animation-delay:.4s">
-          <h4>ON REPEAT — NGỌT</h4>
-          <div class="big">pop rock <span>/ rock</span> việt</div>
-          <p>Em Dạo Này, Bartender, Kẻ Thù. Bấm track ở mixtape để đổi bài — nghe được thật.</p>
+          <h4>ON REPEAT — CÁI THỨ HAI</h4>
+          <div class="big">thắng <span>/ album 2026</span></div>
+          <p>Khóc Đấy, Bút Chì Bạc, Tình Nhân Muôn Kiếp. Bấm track ở mixtape để đổi bài — nghe được thật.</p>
         </section>
         <section class="card info-card code-card reveal" style="animation-delay:.46s">
           <h4>NOW</h4>
           <div class="status-row"><span style="width:8px;height:8px;border-radius:50%;background:#3ECF6E;display:inline-block"></span> learning programming languages</div>
-          <p>badminton weekends · code nights · <a href="https://kusding.github.io" style="color:var(--cream)" target="_blank" rel="noopener">kusding.github.io</a></p>
+          <p>badminton weekends · code nights · <a href="https://kusding.xyz" style="color:var(--cream)" target="_blank" rel="noopener">kusding.xyz</a></p>
         </section>
       </div>
 
       <!-- Projects -->
-      <a class="card proj proj-ff reveal" style="animation-delay:.5s" href="/do-nhay-ff">
+      <a class="card proj proj-ff reveal" id="projects" style="animation-delay:.5s" href="/do-nhay-ff">
         <span class="kicker">PROJECT · FREE FIRE</span>
         <h3>Đo Nhảy FF</h3>
         <p>Tool đo độ nhạy nhảy Free Fire.</p>
@@ -269,17 +276,17 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
   </div>
 
   <div class="footer">
-    <span>© 2026 kusding — made with ♥ + Ngọt on loop</span>
-    <span>links: <a href="https://github.com/kusding" target="_blank" rel="noopener">github</a> · discord: kusding · <a href="https://kusding.github.io" style="color:var(--cream)" target="_blank" rel="noopener">kusding.github.io</a></span>
+    <span>© 2026 kusding — made with love by Kusding/Kien</span>
+    <span>links: <a href="https://github.com/kusding" target="_blank" rel="noopener">github</a> · discord: kusding · <a href="https://kusding.xyz" style="color:var(--cream)" target="_blank" rel="noopener">kusding.xyz</a></span>
   </div>
 </div>
 
 <script>
-// Spotify — embed thật, bấm track là đổi bài + nghe được
+// Spotify — album Cái Thứ Hai, bấm track là đổi bài + nghe được
 const TRACKS = [
-  {n:"Em Dạo Này", a:"Ngọt", id:"4Vo3stTe6AXRFUxPBXeA5Y"},
-  {n:"Bartender", a:"Ngọt", id:"3uzmE9fHq4G7U4Nuup0Rdp"},
-  {n:"Kẻ Thù", a:"Ngọt", id:"0iEcrzlmccEQdQtKOU7ee1"},
+  {n:"Khóc Đấy", a:"Thắng", id:"1x6rRJAgtPYgmlPOkZ6hpz"},
+  {n:"Bút Chì Bạc", a:"Thắng", id:"0Cha5Fz6qQ7M6YjkeQrMMk"},
+  {n:"Tình Nhân Muôn Kiếp", a:"Thắng", id:"2yu8VR2WQJsemMxky8wjJU"},
 ];
 let idx = 0;
 const list = document.getElementById('trackList');

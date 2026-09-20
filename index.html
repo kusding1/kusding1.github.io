@@ -144,13 +144,26 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
 .cell:hover{transform:scale(1.25)}
 .cell.on{background:#1A7F37}
 .contrib-foot{font-family:var(--font-m);font-size:13px;color:#444}
-.side-stack{grid-column:span 5;display:grid;grid-template-rows:1fr 1fr;gap:18px}
+.side-stack{grid-column:span 5;display:grid;gap:18px;align-content:start}
 .info-card{padding:18px;display:flex;flex-direction:column;justify-content:center}
 .info-card h4{font-family:var(--font-m);font-size:11px;letter-spacing:.08em;color:var(--muted2);font-weight:500;margin-bottom:8px}
 .info-card .big{font-family:var(--font-d);font-size:22px;font-weight:700;line-height:1.1}
 .info-card p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
-.ngot{background:linear-gradient(135deg,#2A1A12,#1A1210);border-color:rgba(255,106,38,.25)}
-.ngot .big span{color:var(--accent)}
+.rpc-card{background:linear-gradient(135deg,#1B1533,#141019);border-color:rgba(139,92,246,.35)}
+.wx-card{background:linear-gradient(135deg,#0E2A33,#131A1E);border-color:rgba(56,189,248,.25)}
+.rpc-head{display:flex;align-items:center;gap:8px}
+.sdot{width:8px;height:8px;border-radius:50%;background:#80848e;display:inline-block;flex-shrink:0}
+.sdot.online{background:#3ECF6E;box-shadow:0 0 8px #3ECF6E}.sdot.idle{background:#F0B232}.sdot.dnd{background:#ED4245}.sdot.offline{background:#80848e}
+.rpc-user{font-family:var(--font-m);font-size:12px;color:var(--cream)}
+.rpc-act{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+.rpc-act b{color:var(--cream)}
+.rpc-sp{display:flex;gap:10px;align-items:center;margin-top:10px}
+.rpc-sp img{width:44px;height:44px;border-radius:10px;object-fit:cover;background:#222}
+.rpc-sp .t{font-size:13px;font-weight:600}
+.rpc-sp .a{font-family:var(--font-m);font-size:11px;color:var(--muted)}
+.wx-temp{font-family:var(--font-d);font-size:34px;font-weight:700;line-height:1}
+.wx-temp small{font-size:16px;color:var(--muted);font-weight:500}
+.wx-sub{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
 .code-card{background:var(--panel2)}
 .status-row{display:flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:12px;color:#3ECF6E}
 .footer{margin-top:26px;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-m);font-size:11.5px;color:var(--muted2);flex-wrap:wrap;gap:10px}
@@ -162,6 +175,7 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
   .mini{grid-column:span 6}
   .contrib{grid-column:span 12}
   .side-stack{grid-column:span 12;grid-template-columns:1fr 1fr;grid-template-rows:none}
+  .side-stack .span2{grid-column:span 2}
 }
 @media(max-width:560px){
   .wrap{padding:28px 16px}
@@ -265,12 +279,18 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
       </section>
 
       <div class="side-stack">
-        <section class="card info-card ngot reveal" style="animation-delay:.4s">
-          <h4>ON REPEAT — CÁI THỨ HAI</h4>
-          <div class="big">thắng <span>/ album 2026</span></div>
-          <p>Khóc Đấy, Bút Chì Bạc, Tình Nhân Muôn Kiếp. Bấm track ở mixtape để đổi bài — nghe được thật.</p>
+        <section class="card info-card rpc-card reveal" style="animation-delay:.4s" aria-label="Discord live">
+          <h4>DISCORD · LIVE</h4>
+          <div class="rpc-head"><span class="sdot offline" id="rpcDot"></span><span class="rpc-user" id="rpcUser">kusding</span></div>
+          <div class="rpc-act" id="rpcAct">đang kết nối…</div>
+          <div class="rpc-sp" id="rpcSp" style="display:none"><img id="rpcArt" alt=""><div><div class="t" id="rpcTrack"></div><div class="a" id="rpcArtist"></div></div></div>
         </section>
-        <section class="card info-card code-card reveal" style="animation-delay:.46s">
+        <section class="card info-card wx-card reveal" style="animation-delay:.44s" aria-label="Thời tiết Lâm Đồng">
+          <h4>LÂM ĐỒNG · LIVE</h4>
+          <div class="wx-temp"><span id="wxTemp">--</span><small>°C</small></div>
+          <div class="wx-sub" id="wxSub">đang tải thời tiết…</div>
+        </section>
+        <section class="card info-card code-card span2 reveal" style="animation-delay:.46s">
           <h4>NOW</h4>
           <div class="status-row"><span style="width:8px;height:8px;border-radius:50%;background:#3ECF6E;display:inline-block"></span> learning programming languages</div>
           <p>badminton weekends · code nights · <a href="https://kusding.xyz" style="color:var(--cream)" target="_blank" rel="noopener">kusding.xyz</a></p>
@@ -356,6 +376,52 @@ dd.addEventListener('mouseenter',()=>{clearTimeout(ddTimer);openDd(true);});
 dd.addEventListener('mouseleave',()=>{ddTimer=setTimeout(()=>openDd(false),150);});
 document.addEventListener('click',e=>{if(!dd.contains(e.target))openDd(false);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')openDd(false);});
+
+// Discord RPC via Lanyard — điền Discord user ID (dạng số) vào DISCORD_ID
+const DISCORD_ID = "";
+function clean(s){return String(s||"").replace(/[<>&"]/g,"");}
+async function loadRPC(){
+  const act=document.getElementById('rpcAct'), dot=document.getElementById('rpcDot'), user=document.getElementById('rpcUser');
+  if(!DISCORD_ID){act.textContent='chưa gắn ID Discord — gửi t ID số để bật live.';return;}
+  try{
+    const r=await fetch('https://api.lanyard.rest/v1/users/'+DISCORD_ID);
+    const j=await r.json();
+    if(!j.success)throw 0;
+    const d=j.data;
+    user.textContent=(d.discord_user&&(d.discord_user.display_name||d.discord_user.username))||'kusding';
+    const st=d.discord_status||'offline';
+    dot.className='sdot '+(st==='online'?'online':st==='idle'?'idle':st==='dnd'?'dnd':'offline');
+    const sp=d.listening_to_spotify?d.spotify:null;
+    const game=(d.activities||[]).find(a=>a.type===0);
+    const box=document.getElementById('rpcSp');
+    if(sp){
+      box.style.display='flex';
+      document.getElementById('rpcArt').src=sp.album_art_url;
+      document.getElementById('rpcTrack').textContent=sp.song;
+      document.getElementById('rpcArtist').textContent='♪ '+sp.artist;
+      act.innerHTML='đang nghe <b>Spotify</b>';
+    } else {
+      box.style.display='none';
+      if(game&&game.name)act.innerHTML='đang chơi <b>'+clean(game.name)+'</b>'+(game.details?' — '+clean(game.details):'');
+      else act.textContent = st==='offline' ? 'đang offline' : 'đang online';
+    }
+  }catch(e){act.textContent='không lấy được trạng thái.';}
+}
+loadRPC(); setInterval(loadRPC,30000);
+
+// Thời tiết Lâm Đồng (Open-Meteo, không cần key)
+const WX_TEXT={0:['Quang đãng','☀'],1:['Ít mây','🌤'],2:['Mây rải rác','⛅'],3:['Nhiều mây','☁'],45:['Sương mù','🌫'],48:['Sương mù','🌫'],51:['Mưa phùn','🌧'],53:['Mưa phùn','🌧'],55:['Mưa phùn','🌧'],61:['Mưa nhẹ','🌧'],63:['Mưa','🌧'],65:['Mưa to','⛈'],80:['Mưa rào','🌧'],81:['Mưa rào','🌧'],82:['Mưa to','⛈'],95:['Giông','⛈'],96:['Giông + mưa đá','⛈'],99:['Giông + mưa đá','⛈']};
+async function loadWx(){
+  const t=document.getElementById('wxTemp'), s=document.getElementById('wxSub');
+  try{
+    const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=11.94&longitude=108.46&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m&timezone=Asia%2FHo_Chi_Minh');
+    const j=await r.json(); const c=j.current;
+    const w=WX_TEXT[c.weather_code]||['—',''];
+    t.textContent=Math.round(c.temperature_2m);
+    s.textContent=w[1]+' '+w[0]+' · cảm giác '+Math.round(c.apparent_temperature)+'° · ẩm '+c.relative_humidity_2m+'% · gió '+c.wind_speed_10m+'km/h';
+  }catch(e){s.textContent='không tải được thời tiết.';}
+}
+loadWx(); setInterval(loadWx,600000);
 
 // contribution graph — 1 ô xanh như ảnh, hover để xem
 const g = document.getElementById('graph');

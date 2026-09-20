@@ -347,11 +347,15 @@ function copyDiscord(btn){
 document.getElementById('discordBtn').addEventListener('click',e=>copyDiscord(e.currentTarget));
 document.getElementById('discordTop').addEventListener('click',e=>copyDiscord(e.currentTarget));
 
-// Dropdown Dự án
+// Dropdown Dự án: đưa chuột vào là mở, click cũng mở (mobile)
 const dd=document.querySelector('.dd'), projBtn=document.getElementById('projBtn');
-projBtn.addEventListener('click',e=>{e.stopPropagation();const o=dd.classList.toggle('open');projBtn.setAttribute('aria-expanded',o);});
-document.addEventListener('click',e=>{if(!dd.contains(e.target)){dd.classList.remove('open');projBtn.setAttribute('aria-expanded','false');}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){dd.classList.remove('open');projBtn.setAttribute('aria-expanded','false');}});
+let ddTimer=null;
+function openDd(o){dd.classList.toggle('open',o);projBtn.setAttribute('aria-expanded',o);}
+projBtn.addEventListener('click',e=>{e.stopPropagation();openDd(!dd.classList.contains('open'));});
+dd.addEventListener('mouseenter',()=>{clearTimeout(ddTimer);openDd(true);});
+dd.addEventListener('mouseleave',()=>{ddTimer=setTimeout(()=>openDd(false),150);});
+document.addEventListener('click',e=>{if(!dd.contains(e.target))openDd(false);});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')openDd(false);});
 
 // contribution graph — 1 ô xanh như ảnh, hover để xem
 const g = document.getElementById('graph');

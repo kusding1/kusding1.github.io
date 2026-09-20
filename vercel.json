@@ -3,11 +3,11 @@
   "rewrites": [
     {
       "source": "/do-nhay-ff",
-      "destination": "https://do-nhay-vip.vercel.app"
+      "destination": "https://do-nhay-vip.vercel.app/do-nhay-ff"
     },
     {
       "source": "/do-nhay-ff/:path*",
-      "destination": "https://do-nhay-vip.vercel.app/:path*"
+      "destination": "https://do-nhay-vip.vercel.app/do-nhay-ff/:path*"
     },
     {
       "source": "/watch-together",

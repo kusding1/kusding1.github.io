@@ -377,8 +377,8 @@ dd.addEventListener('mouseleave',()=>{ddTimer=setTimeout(()=>openDd(false),150);
 document.addEventListener('click',e=>{if(!dd.contains(e.target))openDd(false);});
 document.addEventListener('keydown',e=>{if(e.key==='Escape')openDd(false);});
 
-// Discord RPC via Lanyard — điền Discord user ID (dạng số) vào DISCORD_ID
-const DISCORD_ID = "";
+// Discord RPC via Lanyard — ID của Kusding
+const DISCORD_ID = "993361614214533150";
 function clean(s){return String(s||"").replace(/[<>&"]/g,"");}
 async function loadRPC(){
   const act=document.getElementById('rpcAct'), dot=document.getElementById('rpcDot'), user=document.getElementById('rpcUser');

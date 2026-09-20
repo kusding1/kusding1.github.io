@@ -53,6 +53,16 @@ body::before{
 .top-links{display:flex;gap:8px;align-items:center}
 .topbar a.top-discord{font-family:var(--font-m);font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);padding:7px 12px;border-radius:999px;cursor:pointer;text-decoration:none}
 .topbar a.top-discord:hover{color:var(--cream);border-color:rgba(255,106,38,.5)}
+.dd{position:relative}
+.dd-btn .chev{display:inline-block;font-size:10px;transition:transform .2s}
+.dd.open .dd-btn .chev{transform:rotate(180deg)}
+.dd-panel{position:absolute;right:0;top:calc(100% + 8px);min-width:240px;background:#251C16;border:1px solid var(--line);border-radius:14px;padding:6px;display:none;box-shadow:0 18px 40px -12px rgba(0,0,0,.7);z-index:50}
+.dd.open .dd-panel{display:block}
+@media(hover:hover){.dd:hover .dd-panel{display:block}}
+.dd-panel a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:10px;text-decoration:none;color:var(--cream)}
+.dd-panel a:hover{background:rgba(255,106,38,.12)}
+.dd-panel a b{font-size:13.5px}
+.dd-panel a small{font-family:var(--font-m);font-size:11px;color:var(--muted)}
 #projects{scroll-margin-top:16px}
 .layout{display:grid;grid-template-columns:290px 1fr;gap:32px;align-items:start}
 /* LEFT */
@@ -156,6 +166,7 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
 @media(max-width:560px){
   .wrap{padding:28px 16px}
   h1{font-size:44px}
+  .topbar{flex-wrap:wrap;gap:10px}
   .mini{grid-column:span 12;min-height:190px}
   .proj{grid-column:span 12;min-height:150px}
   .side-stack{grid-template-columns:1fr}
@@ -171,13 +182,20 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
-<div class="wrap">
+<div class="wrap" id="top">
   <div class="topbar">
     <span class="dot"><i></i> kusding · lam dong, vn — <span id="clock">--:--</span></span>
-    <div class="top-links">
-      <a class="top-discord" href="#projects">projects ↓</a>
+    <nav class="top-links" aria-label="Điều hướng">
+      <a class="top-discord" href="#top">trang chủ</a>
+      <div class="dd">
+        <button class="top-discord dd-btn" id="projBtn" aria-expanded="false" aria-haspopup="true">dự án <span class="chev">∨</span></button>
+        <div class="dd-panel" id="projPanel" role="menu">
+          <a href="/do-nhay-ff" role="menuitem"><b>Đo Nhảy FF</b><small>tool đo độ nhạy Free Fire ↗</small></a>
+          <a href="/watch-together" role="menuitem"><b>Xem Chung</b><small>xem phim chung 2 máy ↗</small></a>
+        </div>
+      </div>
       <button class="top-discord" id="discordTop" title="Copy Discord username">discord: kusding ⎘</button>
-    </div>
+    </nav>
   </div>
 
   <div class="layout">
@@ -328,6 +346,12 @@ function copyDiscord(btn){
 }
 document.getElementById('discordBtn').addEventListener('click',e=>copyDiscord(e.currentTarget));
 document.getElementById('discordTop').addEventListener('click',e=>copyDiscord(e.currentTarget));
+
+// Dropdown Dự án
+const dd=document.querySelector('.dd'), projBtn=document.getElementById('projBtn');
+projBtn.addEventListener('click',e=>{e.stopPropagation();const o=dd.classList.toggle('open');projBtn.setAttribute('aria-expanded',o);});
+document.addEventListener('click',e=>{if(!dd.contains(e.target)){dd.classList.remove('open');projBtn.setAttribute('aria-expanded','false');}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){dd.classList.remove('open');projBtn.setAttribute('aria-expanded','false');}});
 
 // contribution graph — 1 ô xanh như ảnh, hover để xem
 const g = document.getElementById('graph');

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUSDING — Kien · pop rock, badminton, code</title>
+<meta name="description" content="Hello! I'm Kien (aka Kusding). Pop rock, Ngọt, badminton, programming.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#161110;
+  --bg2:#1D1714;
+  --panel:#201915;
+  --panel2:#131313;
+  --cream:#EADCCB;
+  --muted:#AB9C8D;
+  --muted2:#7A6E62;
+  --accent:#FF6A26;
+  --accent-soft:rgba(255,106,38,.14);
+  --line:rgba(234,220,203,.10);
+  --radius:22px;
+  --font-d:"Space Grotesk",system-ui,sans-serif;
+  --font-b:"Inter",system-ui,sans-serif;
+  --font-m:"JetBrains Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:var(--font-b);
+  min-height:100dvh;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(700px 420px at 15% 0%, rgba(255,106,38,.07), transparent 60%),
+    radial-gradient(600px 500px at 95% 20%, rgba(0,180,160,.06), transparent 60%),
+    radial-gradient(500px 600px at 80% 100%, rgba(255,0,80,.05), transparent 60%);
+}
+.grain{position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.07;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:48px 28px 40px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;font-family:var(--font-m);font-size:12px;color:var(--muted)}
+.topbar .dot{display:inline-flex;align-items:center;gap:8px}
+.dot i{width:8px;height:8px;border-radius:50%;background:#3ECF6E;display:inline-block;box-shadow:0 0 12px #3ECF6E}
+.topbar button.top-discord{font-family:var(--font-m);font-size:12px;color:var(--muted);background:transparent;border:1px solid var(--line);padding:7px 12px;border-radius:999px;cursor:pointer}
+.topbar button.top-discord:hover{color:var(--cream);border-color:rgba(255,106,38,.5)}
+.layout{display:grid;grid-template-columns:290px 1fr;gap:32px;align-items:start}
+/* LEFT */
+.profile{position:sticky;top:28px}
+.avatar{width:148px;height:148px;border-radius:50%;overflow:hidden;background:#0e0c0a;border:2px solid rgba(255,106,38,.35);position:relative}
+.avatar img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated;filter:contrast(1.05) saturate(1.1)}
+.avatar::after{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:inset 0 0 0 6px rgba(0,0,0,.25)}
+h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02em;color:var(--accent);margin:20px 0 14px;font-weight:700}
+.bio{color:var(--muted);font-size:16.5px;line-height:1.55;max-width:30ch}
+.bio strong{color:var(--cream);font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.tags span{font-family:var(--font-m);font-size:11.5px;padding:7px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.02)}
+.tags span b{color:var(--accent)}
+.links-col{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.btn{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-radius:14px;background:var(--panel);border:1px solid var(--line);color:var(--cream);text-decoration:none;font-weight:600;font-size:14px;font-family:var(--font-b);cursor:pointer;width:100%;text-align:left;transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .2s,background .2s}
+.btn small{font-family:var(--font-m);font-weight:400;font-size:11px;color:var(--muted)}
+.btn:hover{transform:translateY(-2px);border-color:rgba(255,106,38,.55);background:#261D18}
+.btn:active{transform:translateY(1px) scale(.98)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.card{border-radius:var(--radius);border:1px solid var(--line);overflow:hidden;position:relative;transition:transform .3s cubic-bezier(.16,1,.3,1),border-color .2s,box-shadow .3s;background:var(--panel)}
+.card:hover{transform:translateY(-3px);border-color:rgba(234,220,203,.22);box-shadow:0 18px 40px -18px rgba(0,0,0,.7)}
+.card:focus-within{border-color:var(--accent)}
+.reveal{opacity:0;transform:translateY(18px);animation:up .7s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{opacity:1;transform:none}}
+/* Spotify */
+.spotify{grid-column:span 6;background:#111214;display:flex;flex-direction:column;min-height:258px}
+.sp-top{display:flex;gap:14px;padding:16px 16px 10px}
+.sp-cover{width:86px;height:86px;border-radius:12px;background:linear-gradient(135deg,#1e3a8a,#0a1a5a);flex-shrink:0;display:grid;place-items:center;position:relative;overflow:hidden}
+.sp-cover .bars{display:flex;gap:3px;align-items:end;height:26px}
+.sp-cover .bars i{width:3px;background:#7DA2FF;border-radius:2px;display:block;height:10px}
+.spotify:hover .sp-cover .bars i{animation:eq 1s ease-in-out infinite}
+.spotify:hover .sp-cover .bars i:nth-child(2){animation-delay:.15s}.spotify:hover .sp-cover .bars i:nth-child(3){animation-delay:.3s}.spotify:hover .sp-cover .bars i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{height:8px}50%{height:24px}}
+.sp-list{flex:1;font-size:12.5px}
+.sp-row{display:flex;align-items:center;gap:9px;padding:5px 10px 5px 6px;border-radius:9px;cursor:pointer;color:#CFCFCF;border:0;background:transparent;width:100%;text-align:left;font-family:var(--font-b)}
+.sp-row:hover,.sp-row.active{background:rgba(255,255,255,.07);color:#fff}
+.sp-num{font-family:var(--font-m);font-size:11px;color:#8a8a8a;width:14px;text-align:right}
+.sp-thumb{width:22px;height:22px;border-radius:5px;background:#2a2d34;flex-shrink:0;display:grid;place-items:center;font-size:11px}
+.sp-row.active .sp-thumb{background:var(--accent)}
+.sp-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-name em{font-style:normal;color:#8a8a8a}
+.sp-brand{margin-left:auto;color:#1DB954;flex-shrink:0;display:inline-flex}
+.sp-brand:hover{color:#1ed760}
+.sp-bottom{padding:10px 16px 16px}
+.sp-track{font-size:13px;font-weight:600;margin-bottom:2px}
+.sp-sub{font-family:var(--font-m);font-size:10.5px;color:#8a8a8a;display:inline-block;background:#22252c;padding:3px 7px;border-radius:6px;margin-bottom:2px}
+/* FB / TikTok */
+.mini{grid-column:span 3;min-height:258px;padding:18px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:inherit}
+.mini .logo{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;margin-bottom:auto}
+.fb{background:linear-gradient(180deg,#232E44,#151B2A)}
+.fb .logo{background:#1877F2}
+.mini h3{font-family:var(--font-d);font-size:16px;font-weight:600;line-height:1.2}
+.mini p{font-family:var(--font-m);font-size:11.5px;color:var(--muted);margin:3px 0 14px}
+.pill{align-self:flex-start;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:999px;border:0;cursor:pointer}
+.fb .pill{background:#2D5BD7;color:#fff}
+.fb .pill:hover{background:#3b6bf0}
+.tt{background:linear-gradient(180deg,#0E2E2F 0%,#172021 45%,#3B0F2B 100%);color:#fff}
+.tt .logo{background:#fff}
+.tt p{color:rgba(255,255,255,.7)}
+.tt .pill{background:#FDE8EF;color:#111}
+.tt .pill:hover{background:#fff}
+/* GitHub */
+.contrib{grid-column:span 7;background:#F5F1EB;color:#111;padding:16px 18px 12px;min-height:238px}
+.contrib-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.cat{width:34px;height:34px;border-radius:50%;background:#111;color:#fff;display:grid;place-items:center}
+.grid-graph{display:grid;grid-template-columns:repeat(20,1fr);gap:5px;margin:8px 0 12px}
+.cell{aspect-ratio:1;border-radius:3.5px;background:#E4E0D8;transition:transform .15s}
+.cell:hover{transform:scale(1.25)}
+.cell.on{background:#1A7F37}
+.contrib-foot{font-family:var(--font-m);font-size:13px;color:#444}
+.side-stack{grid-column:span 5;display:grid;grid-template-rows:1fr 1fr;gap:18px}
+.info-card{padding:18px;display:flex;flex-direction:column;justify-content:center}
+.info-card h4{font-family:var(--font-m);font-size:11px;letter-spacing:.08em;color:var(--muted2);font-weight:500;margin-bottom:8px}
+.info-card .big{font-family:var(--font-d);font-size:22px;font-weight:700;line-height:1.1}
+.info-card p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
+.ngot{background:linear-gradient(135deg,#2A1A12,#1A1210);border-color:rgba(255,106,38,.25)}
+.ngot .big span{color:var(--accent)}
+.code-card{background:var(--panel2)}
+.status-row{display:flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:12px;color:#3ECF6E}
+.footer{margin-top:26px;display:flex;justify-content:space-between;align-items:center;font-family:var(--font-m);font-size:11.5px;color:var(--muted2);flex-wrap:wrap;gap:10px}
+.footer a{color:var(--muted);text-decoration:none;border-bottom:1px dotted var(--muted2)}
+@media(max-width:980px){
+  .layout{grid-template-columns:1fr}
+  .profile{position:static;text-align:left}
+  .spotify{grid-column:span 12}
+  .mini{grid-column:span 6}
+  .contrib{grid-column:span 12}
+  .side-stack{grid-column:span 12;grid-template-columns:1fr 1fr;grid-template-rows:none}
+}
+@media(max-width:560px){
+  .wrap{padding:28px 16px}
+  h1{font-size:44px}
+  .mini{grid-column:span 12;min-height:190px}
+  .side-stack{grid-template-columns:1fr}
+  .grid-graph{grid-template-columns:repeat(14,1fr)}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="wrap">
+  <div class="topbar">
+    <span class="dot"><i></i> kusding · lam dong, vn — <span id="clock">--:--</span></span>
+    <button class="top-discord" id="discordTop" title="Copy Discord username">discord: kusding ⎘</button>
+  </div>
+
+  <div class="layout">
+    <!-- LEFT -->
+    <aside class="profile reveal" style="animation-delay:.05s">
+      <div class="avatar">
+        <img src="https://github.com/kusding.png" alt="Kusding avatar" onerror="this.style.display='none';this.parentNode.style.background='radial-gradient(circle at 50% 30%,#FFD35A,#C97A1A 60%,#5A2A0A)';">
+      </div>
+      <h1>KUSDING</h1>
+      <p class="bio">Hello! I'm <strong>Kien (aka Kusding)</strong>. I like pop rock/rock music (<strong>Ngọt</strong> is my favorite band), playing badminton, and learning programming languages.</p>
+      <div class="tags">
+        <span><b>♪</b> Ngọt / Thắng</span>
+        <span>🏸 badminton</span>
+        <span>&lt;/&gt; code</span>
+      </div>
+      <nav class="links-col" aria-label="Social links">
+        <a class="btn" href="https://github.com/kusding" target="_blank" rel="noopener">GitHub <small>github.com/kusding ↗</small></a>
+        <a class="btn" href="https://facebook.com/kusding" target="_blank" rel="noopener">Facebook <small>Trung Kien ↗</small></a>
+        <a class="btn" href="https://tiktok.com/@kienz" target="_blank" rel="noopener">TikTok <small>@kienz · 631 ↗</small></a>
+        <button class="btn" id="discordBtn" type="button" title="Copy Discord username">Discord <small>kusding · bấm để copy ⎘</small></button>
+        <a class="btn" href="https://kusding.github.io" target="_blank" rel="noopener">Website <small>kusding.github.io ↗</small></a>
+      </nav>
+    </aside>
+
+    <!-- RIGHT BENTO -->
+    <main class="bento">
+      <!-- Spotify — real embed, nghe được thật -->
+      <section class="card spotify reveal" style="animation-delay:.12s" aria-label="Mixtape Ngọt">
+        <div class="sp-top">
+          <div class="sp-cover" aria-hidden="true"><div class="bars"><i></i><i></i><i></i><i></i></div></div>
+          <div class="sp-list" id="trackList" role="listbox" aria-label="Tracks"></div>
+          <a class="sp-brand" title="Mở Spotify" href="https://open.spotify.com/search/Ng%E1%BB%8Dt%20band" target="_blank" rel="noopener">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zm5.5 17.3a.75.75 0 0 1-1 1c-2.9-1.8-6.5-2.2-10.8-1.2a.75.75 0 1 1-.3-1.5c4.7-1.1 8.7-.6 12 1.3.4.2.5.9.1 1.4zm1.5-3.3a.94.94 0 0 1-1.3 1.3c-3.3-2-8.3-2.6-12.2-1.4a.94.94 0 1 1-.5-1.8c4.4-1.3 10-0.7 13.9 1.6.5.2.6.9.1 1.3zm.1-3.4C15.2 8 8.8 7.8 5.3 9a1.13 1.13 0 1 1-.7-2.1c4-1.4 11.2-1.1 15.6 1.7a1.13 1.13 0 0 1-1.1 2z"/></svg>
+          </a>
+        </div>
+        <div class="sp-bottom">
+          <div class="sp-track" id="nowTitle">Em Dạo Này - Ngọt</div>
+          <span class="sp-sub">Spotify · bấm track để đổi bài</span>
+          <iframe id="spFrame" title="Spotify player — Ngọt" src="https://open.spotify.com/embed/track/4Vo3stTe6AXRFUxPBXeA5Y?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" style="border-radius:12px;margin-top:10px"></iframe>
+        </div>
+      </section>
+
+      <!-- Facebook -->
+      <a class="card mini fb reveal" style="animation-delay:.2s" href="https://facebook.com/kusding" target="_blank" rel="noopener">
+        <span class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M24 12a12 12 0 1 0-13.9 11.9v-8.4h-3V12h3V9.4c0-3 1.8-4.7 4.5-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 1-2 1.9V12h3.3l-.5 3.5h-2.8v8.4A12 12 0 0 0 24 12z"/></svg></span>
+        <h3>Trung Kien</h3>
+        <p>facebook.com</p>
+        <span class="pill">＋ Add Friend</span>
+      </a>
+
+      <!-- TikTok -->
+      <a class="card mini tt reveal" style="animation-delay:.28s" href="https://tiktok.com/@kienz" target="_blank" rel="noopener">
+        <span class="logo"><svg width="22" height="22" viewBox="0 0 24 24" fill="#111"><path d="M19.6 7.2a5.6 5.6 0 0 1-3.7-3.6V1.5h-3.4v13.3a2.9 2.9 0 1 1-2-2.7V8.6a6.3 6.3 0 1 0 5.4 6.2V8.1a9 9 0 0 0 3.7 1.9V6.6c0 .2 0 .4 0 .6z"/></svg></span>
+        <h3>kienz</h3>
+        <p>tiktok.com</p>
+        <span class="pill">Follow 631</span>
+      </a>
+
+      <!-- Contributions -->
+      <section class="card contrib reveal" style="animation-delay:.34s" aria-label="Coding activity">
+        <div class="contrib-head">
+          <span class="cat"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.9 10.9c.6.1.8-.2.8-.5v-2c-3.2.7-3.9-1.4-3.9-1.4-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.1.1 1.7 1.2 1.7 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.4-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C16.3 4.2 17.3 4.5 17.3 4.5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.2c0 .3.2.6.8.5A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></span>
+          <span style="font-family:var(--font-m);font-size:11.5px;color:#666">contributions · last 20 weeks</span>
+        </div>
+        <div class="grid-graph" id="graph"></div>
+        <div class="contrib-foot">kusding</div>
+      </section>
+
+      <div class="side-stack">
+        <section class="card info-card ngot reveal" style="animation-delay:.4s">
+          <h4>ON REPEAT — NGỌT</h4>
+          <div class="big">pop rock <span>/ rock</span> việt</div>
+          <p>Em Dạo Này, Bartender, Kẻ Thù. Bấm track ở mixtape để đổi bài — nghe được thật.</p>
+        </section>
+        <section class="card info-card code-card reveal" style="animation-delay:.46s">
+          <h4>NOW</h4>
+          <div class="status-row"><span style="width:8px;height:8px;border-radius:50%;background:#3ECF6E;display:inline-block"></span> learning programming languages</div>
+          <p>badminton weekends · code nights · <a href="https://kusding.github.io" style="color:var(--cream)" target="_blank" rel="noopener">kusding.github.io</a></p>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="footer">
+    <span>© 2026 kusding — made with ♥ + Ngọt on loop</span>
+    <span>links: <a href="https://github.com/kusding" target="_blank" rel="noopener">github</a> · discord: kusding · <a href="https://kusding.github.io" style="color:var(--cream)" target="_blank" rel="noopener">kusding.github.io</a></span>
+  </div>
+</div>
+
+<script>
+// Spotify — embed thật, bấm track là đổi bài + nghe được
+const TRACKS = [
+  {n:"Em Dạo Này", a:"Ngọt", id:"4Vo3stTe6AXRFUxPBXeA5Y"},
+  {n:"Bartender", a:"Ngọt", id:"3uzmE9fHq4G7U4Nuup0Rdp"},
+  {n:"Kẻ Thù", a:"Ngọt", id:"0iEcrzlmccEQdQtKOU7ee1"},
+];
+let idx = 0;
+const list = document.getElementById('trackList');
+const nowTitle = document.getElementById('nowTitle');
+const frame = document.getElementById('spFrame');
+
+function render(){
+  list.innerHTML = TRACKS.map((t,i)=>`
+    <button class="sp-row ${i===idx?'active':''}" data-i="${i}" role="option" aria-selected="${i===idx}">
+      <span class="sp-num">${i+1}</span>
+      <span class="sp-thumb">${t.n[0]}</span>
+      <span class="sp-name">${t.n} <em>- ${t.a}</em></span>
+    </button>`).join('');
+  list.querySelectorAll('.sp-row').forEach(b=>b.addEventListener('click',()=>{
+    idx = +b.dataset.i;
+    const t = TRACKS[idx];
+    nowTitle.textContent = t.n+' - '+t.a;
+    frame.src = 'https://open.spotify.com/embed/track/'+t.id+'?utm_source=generator&theme=0';
+    render();
+  }));
+}
+render();
+
+// Discord — bấm là copy username "kusding"
+function copyDiscord(btn){
+  const done = () => {
+    const small = btn.querySelector('small');
+    const old = btn.dataset.orig || (small ? small.textContent : '');
+    if(small){ btn.dataset.orig = old; small.textContent = 'đã copy ✓'; }
+    else btn.textContent = 'đã copy ✓';
+    setTimeout(()=>{ if(small) small.textContent = btn.dataset.orig; },1200);
+  };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText('kusding').then(done).catch(done);
+  } else {
+    const ta=document.createElement('textarea'); ta.value='kusding'; document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); done();
+  }
+}
+document.getElementById('discordBtn').addEventListener('click',e=>copyDiscord(e.currentTarget));
+document.getElementById('discordTop').addEventListener('click',e=>copyDiscord(e.currentTarget));
+
+// contribution graph — 1 ô xanh như ảnh, hover để xem
+const g = document.getElementById('graph');
+const total = window.innerWidth<560 ? 98 : 140;
+const hot = 87;
+for(let i=0;i<total;i++){
+  const d=document.createElement('div');
+  d.className='cell'+(i===hot?' on':'');
+  d.title = i===hot ? '3 contributions' : '0';
+  d.addEventListener('mouseenter',()=>{ if(!d.classList.contains('on')) d.style.background='#CFC9BE'; });
+  d.addEventListener('mouseleave',()=>{ if(!d.classList.contains('on')) d.style.background=''; });
+  g.appendChild(d);
+}
+// clock Lam Dong (ICT)
+function tick(){
+  try{
+    const t=new Date().toLocaleTimeString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh',hour:'2-digit',minute:'2-digit'});
+    document.getElementById('clock').textContent=t+' ICT';
+  }catch{ document.getElementById('clock').textContent='lam dong'; }
+}
+tick(); setInterval(tick,30000);
+</script>
+</body>
+</html>

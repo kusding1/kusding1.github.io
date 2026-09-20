@@ -11,11 +11,11 @@
     },
     {
       "source": "/watch-together",
-      "destination": "https://watch-together.vercel.app"
+      "destination": "https://watch-toghether.vercel.app/"
     },
     {
       "source": "/watch-together/:path*",
-      "destination": "https://watch-together.vercel.app/:path*"
+      "destination": "https://watch-toghether.vercel.app/:path*"
     }
   ]
 }

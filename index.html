@@ -112,6 +112,15 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
 .tt p{color:rgba(255,255,255,.7)}
 .tt .pill{background:#FDE8EF;color:#111}
 .tt .pill:hover{background:#fff}
+/* Projects */
+.proj{grid-column:span 6;min-height:176px;padding:20px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;color:inherit}
+.proj .kicker{font-family:var(--font-m);font-size:11px;letter-spacing:.08em;color:var(--muted);margin-bottom:8px}
+.proj h3{font-family:var(--font-d);font-size:20px;font-weight:700;line-height:1.15}
+.proj p{font-size:13px;color:var(--muted);margin:6px 0 14px;line-height:1.5}
+.proj .pill{align-self:flex-start;font-size:12.5px;font-weight:600;padding:8px 14px;border-radius:999px;background:var(--cream);color:#111}
+.proj:hover .pill{background:var(--accent);color:#000}
+.proj-ff{background:linear-gradient(135deg,#2A1408,#161110);border-color:rgba(255,106,38,.3)}
+.proj-watch{background:linear-gradient(135deg,#1C1430,#141019);border-color:rgba(139,92,246,.35)}
 /* GitHub */
 .contrib{grid-column:span 7;background:#F5F1EB;color:#111;padding:16px 18px 12px;min-height:238px}
 .contrib-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
@@ -144,6 +153,7 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
   .wrap{padding:28px 16px}
   h1{font-size:44px}
   .mini{grid-column:span 12;min-height:190px}
+  .proj{grid-column:span 12;min-height:150px}
   .side-stack{grid-template-columns:1fr}
   .grid-graph{grid-template-columns:repeat(14,1fr)}
 }
@@ -241,6 +251,20 @@ h1{font-family:var(--font-d);font-size:52px;line-height:.95;letter-spacing:-.02e
           <p>badminton weekends · code nights · <a href="https://kusding.github.io" style="color:var(--cream)" target="_blank" rel="noopener">kusding.github.io</a></p>
         </section>
       </div>
+
+      <!-- Projects -->
+      <a class="card proj proj-ff reveal" style="animation-delay:.5s" href="https://kusding.vercel.app/do-nhay-ff">
+        <span class="kicker">PROJECT · FREE FIRE</span>
+        <h3>Đo Nhảy FF</h3>
+        <p>Tool đo độ nhạy nhảy Free Fire.</p>
+        <span class="pill">Mở app ↗</span>
+      </a>
+      <a class="card proj proj-watch reveal" style="animation-delay:.56s" href="https://kusding.vercel.app/watch-together">
+        <span class="kicker">PROJECT · XEM CHUNG</span>
+        <h3>Xem Chung — 2 máy 1 phim</h3>
+        <p>Dán link phim, tạo phòng, vừa xem vừa chat.</p>
+        <span class="pill">Mở app ↗</span>
+      </a>
     </main>
   </div>
 
